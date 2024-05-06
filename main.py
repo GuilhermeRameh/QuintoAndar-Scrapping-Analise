@@ -14,20 +14,21 @@ url = 'https://www.quintoandar.com.br/alugar/imovel/sao-paulo-sp-brasil'
 driver.get(url)
 driver.implicitly_wait(10)
 
-wait = WebDriverWait(driver, timeout=2)
+wait = WebDriverWait(driver, timeout=5)
 
 
 #%%
 horas = []
 
-for i in range(10):
+for i in range(50):
     try:
         horas = driver.find_elements(By.XPATH, '//main/section[2]/div/div')
         wait.until(EC.element_to_be_clickable((By.XPATH, '//main/section[2]/div/div[last()-2]/button')))
         horas[-3].click()
-        driver.implicitly_wait(5)
+        wait.until(EC.staleness_of(horas[-3]))
+
     except Exception as err:
-        print(f'se fudeu em {i}\n {err = }')
+        print(f'\nse fudeu em {i}: {err = }\n')
 
         if isinstance(err, StaleElementReferenceException):
             print("Attempting to recover from StaleElementReferenceException")
