@@ -3,8 +3,6 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-# driver = webdriver.Chrome()
-# driver.set_page_load_timeout(60)
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless') # ensure GUI is off
@@ -20,7 +18,7 @@ wait = WebDriverWait(driver, timeout=5)
 #%%
 horas = []
 
-for i in range(50):
+for i in range(10):
     try:
         horas = driver.find_elements(By.XPATH, '//main/section[2]/div/div')
         wait.until(EC.element_to_be_clickable((By.XPATH, '//main/section[2]/div/div[last()-2]/button')))
