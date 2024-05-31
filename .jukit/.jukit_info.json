@@ -1,0 +1,1 @@
+{"cmd": "\nfrom IPython.display import display\n\ndf.groupby('cluster').asking_price.mean()\ndf.groupby('cluster').asking_price.std()\ndisplay(df.groupby('cluster').describe())\n", "cmd_opts": " --cell_id=MbSvYK54rM -s", "import_complete": 1, "terminal": "nvimterm"}
